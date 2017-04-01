@@ -1,6 +1,6 @@
 {
   "name": "cirque",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Utilities for negotiating between circles and polygons in SVG",
   "main": "./dist/index.js",
   "scripts": {
@@ -9,14 +9,13 @@
     "watch": "babel -w src -d dist",
     "prepublish": "npm run build"
   },
-  "author": "Paul Dechov (paul@two-n.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dechov/cirque.git"
+    "url": "https://github.com/two-n/cirque.git"
   },
-  "homepage": "https://github.com/dechov/cirque",
-  "bugs": "https://github.com/dechov/cirque/issues",
+  "homepage": "https://github.com/two-n/cirque",
+  "bugs": "https://github.com/two-n/cirque/issues",
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-plugin-transform-object-assign": "^6.22.0",

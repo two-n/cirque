@@ -47,6 +47,8 @@ let path    // Given a geo path generator
 
 ### Example: geometry
 ```js
+import { geoToCircle, circlePath, interpolatePath } from 'cirque'
+
 let geometry  // Given a GeoJSON Polygon or MultiPolygon geometry
 
 const interpolator = interpolatePath(
@@ -60,16 +62,18 @@ d3.transition().tween('shape', () => t => { render([ interpolator(t) ]) })
 ### Example: features
 
 ```js
+import * as cirque from 'cirque'
+
 let features  // Given an array of GeoJSON Polygon or MultiPolygon features
 
-const scale = radiusScale( path.area(mergedFeatures), 7.5e9 )
+const scale = cirque.radiusScale( path.area(mergedFeatures), 7.5e9 )
 const circles = features.map(feature =>
-  geoToCircle(feature, path, scale(feature.properties['population']))
+  circle.geoToCircle(feature, path, scale(feature.properties['population']))
 )
 
-const separatedCircles = avoidOverlap(circles)
-const circlePaths = separatedCircles.map(circlePath)
-const interpolator = interpolatePaths(features.map(path), circlePaths)
+const separatedCircles = cirque.avoidOverlap(circles)
+const circlePaths = separatedCircles.map(cirque.circlePath)
+const interpolator = cirque.interpolatePaths(features.map(path), circlePaths)
 
 d3.transition().tween('shapes', () => t => { render( interpolator[i](t) ) })
 ```

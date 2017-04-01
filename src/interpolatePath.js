@@ -53,7 +53,7 @@ const processShape = d => {
       .split(/M/)
       .map(polygon => polygon.split(/L/))
     const polygonIndex = scan(polygons, (a, b) => descending(a.length, b.length))
-    const points = polygons[polygonIndex].map(d => d.split(",").map(Number))
+    const points = polygons[polygonIndex].map(d => d.split(',').map(Number))
 
     const gaps = computeGaps(points)
     let [g1, ...gRest] = [].concat(gaps).sort(descending)
@@ -71,7 +71,7 @@ const processShape = d => {
 }
 
 const generateShape = numPoints => d =>
-  `M ${(d.circle != null ? sampleCircle : oversamplePath)(d.circle || d.points, numPoints, d.offset || 0).join("L")} Z`
+  `M ${(d.circle != null ? sampleCircle : oversamplePath)(d.circle || d.points, numPoints, d.offset || 0).join('L')} Z`
 
 
 export default (a, b) => {
