@@ -1,7 +1,7 @@
 {
   "name": "cirque",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.1.1",
+  "description": "Utilities for negotiating between circles and polygons in SVG",
   "main": "./dist/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register",
