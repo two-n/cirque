@@ -1,6 +1,10 @@
-# Cirque
+![Cirque](loop.gif)
 
-Utilities for negotiating between circles and polygons in SVG, using D3. `npm install cirque`
+Utilities for negotiating between circles and polygons in SVG, using D3.
+
+```bash
+npm install cirque
+```
 
 
 ## Functions
@@ -14,7 +18,7 @@ _Circle objects_ take the form: `{ x, y, r }`
 Positional arguments:
 - geometry: any GeoJSON geometry or feature (required)
 - path: [geographic path generator](https://github.com/d3/d3-geo#geoPath). Defaults to bare `d3.geoPath()`, which assumes pre-projected geometry
-- radius: circle radius. Defaults to computing radius from path.area(geometry)
+- radius: circle radius. Defaults to computing radius from `path.area(geometry)`
 - object: mutates passed object rather than creating a new one
 
 ### circlePath
@@ -77,3 +81,12 @@ const interpolator = cirque.interpolatePaths(features.map(path), circlePaths)
 
 d3.transition().tween('shapes', () => t => { render( interpolator[i](t) ) })
 ```
+
+
+## Rationale
+
+Just as a lack of color is physically considered _black_ (though artistically often considered _white_), a lack of shape can in a certain sense be considered a _circle_ (or a n-sphere generally): there is no discrete segmentation and no starting point better justified than another.
+
+This shapelessness is desirable for comparing values in a controlled way (such as in a bubble map) to minimize distortion and distraction.
+
+The tools in this package amount to a method for switching between precise forms, such as geographic areas, and corresponding value-sized bubbles, while maintaining constancy.
