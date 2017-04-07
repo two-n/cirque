@@ -1,7 +1,7 @@
 {
   "name": "cirque",
-  "version": "0.1.2",
-  "description": "Utilities for negotiating between circles and polygons in SVG",
+  "version": "0.2.0",
+  "description": "Utilities for negotiating between circles and paths in SVG",
   "main": "./dist/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register",
@@ -35,6 +35,7 @@
     ]
   },
   "dependencies": {
+    "bezier-js": "^2.2.2",
     "d3-array": "^1.1.1",
     "d3-force": "^1.0.6",
     "d3-geo": "^1.6.3",
