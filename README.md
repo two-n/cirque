@@ -91,9 +91,16 @@ d3.transition().tween('shapes', () => t => { render( interpolator(t) ) })
 ```
 
 
+## Approach
+
+- Aligns circle and path by tracing a circle using the path's commands
+- Splits path commands when necessary to maintain a balance between a) mapping path commands uniformly, and b) aligning per distance unit
+- Avoids [more sophisticated](http://spencermortensen.com/articles/bezier-circle/) circle approximation methods in favor of high-rate sampling
+
+
 ## Limitations
 
-The _chain path_ is a SVG path description of a polygonal chain (i.e. polyline, composite Bézier, etc.) containing M commands as well as absolute or relative L, C, and Z commands. Support for all path commands is planned.
+The _chain path_ is a SVG path description of a polygonal chain (i.e. polyline, composite Bézier, etc.) containing any SVG path commands except arcs, support for which is planned.
 
 The _circle path_ is a SVG path description containing an M command followed by at least one A command (but typically two). `circlePath` is a utility for generating simple, compatible _circle paths_. Some more flexiblility in the format may come in the future, including (optionally) adhering to winding order.
 
@@ -107,11 +114,13 @@ This shapelessness is desirable for comparing values in a controlled way (say, i
 The tools in this package amount to a method for going between precise forms such as geographic areas, and corresponding value-sized bubbles, while maintaining constancy.
 
 
-## Approach
+## Shape morphing alternatives
 
-- Avoids any available [more sophisticated](http://spencermortensen.com/articles/bezier-circle/) circle approximation methods in favor of brute force sampling, and splits path commands when necessary to maintain a balance between a) mapping path commands uniformly and b) aligning per distance unit.
+- [SVG.js path morphing plugin](https://github.com/svgdotjs/svg.pathmorphing.js): simple and well done. Has some of the same approach and associated limitations
+- [SVG Morpheus](http://alexk111.github.io/SVG-Morpheus/): works well and supports arbitrary SVG 👍
+- [MorphSVG](https://greensock.com/morphSVG): proprietary but seems quite customizable and the demos are awesome
 
 
 ## Discussion and contribution
 
-Open an [issue](https://github.com/two-n/cirque/issues/new) or [pull request](https://github.com/two-n/cirque/compare) with either high-level use cases or practical support tickets, or contact us on [Twitter](twitter.com/2nfo). We do intend for this package to stay within its stated mission, but advice, critique, and experiences are welcome.
+Open an [issue](https://github.com/two-n/cirque/issues/new) or [pull request](https://github.com/two-n/cirque/compare) with either high-level use cases or practical support tickets, or contact us on [twitter](https://twitter.com/2nfo). We intend to keep this package focused on its stated mission, but advice, critique, and experiences are very welcome.
